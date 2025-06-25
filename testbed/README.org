@@ -2,12 +2,12 @@
 
 This testbed simulates a multi-region FLUIDOS deployment. It consists of three FLUIDOS nodes (k8s cluster) simulating a provider and two consumers and composed by two k8s nodes each:
 
-- **consumer-control-plane**
-- **consumer-worker**
-- **provider-italy-control-plane**
-- **provider-italy-worker**
-- **provider-germany-control-plane**
-- **provider-germany-worker**
+- =consumer-control-plane=
+- =consumer-worker=
+- =provider-italy-control-plane=
+- =provider-italy-worker=
+- =provider-germany-control-plane=
+- =provider-germany-worker=
 
 The setup is intended for testing the creation of a bigger (10k+ nodes) infrastructure of FLUIDOS-based federation and multi-cluster orchestration.
 
@@ -15,8 +15,8 @@ The setup is intended for testing the creation of a bigger (10k+ nodes) infrastr
 
 Ensure the following tools are installed on your system:
 
-- **kubectl** (Client Version: v1.32.2)
-- **liqoctl** (Client version: v1.0.0)
+- =kubectl= (Client Version: v1.32.2)
+- =liqoctl= (Client version: v1.0.0)
 
 You can install the requirements using the following links:
 
