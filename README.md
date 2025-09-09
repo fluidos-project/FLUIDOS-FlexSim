@@ -8,7 +8,11 @@ FLUIDOS FlexSim provides an emulation and simulation environment for validating 
 
 ## Installation
 
-Run the _ksim-installer.sh_ as root to install the required dependencies and set up the environment:
+Run:
+```shell
+sudo ./ksim-installer.sh
+```
+to install the required dependencies and set up the environment:
 - **Kwok**
 - **Kind**
 - **Liqoctl**
