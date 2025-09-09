@@ -10,7 +10,7 @@ FLUIDOS FlexSim provides an emulation and simulation environment for validating 
 
 Run:
 ```shell
-sudo ./ksim-installer.sh
+sudo ./flexsim-installer.sh
 ```
 to install the required dependencies and set up the environment:
 - **Kwok**
@@ -22,7 +22,7 @@ to install the required dependencies and set up the environment:
 
 Then run:
 ```shell
-sudo install ksim /usr/local/bin
+sudo install flexsim /usr/local/bin
 ```
 To install the binary.
 
@@ -32,14 +32,14 @@ To run an introductory simulation follow the steps below (you can tab for comple
 
 - Initialize a **workspace** (Directory containing configurations and logs)
 ```shell
-ksim initialize <workspace-name>
+flexsim initialize <workspace-name>
 ```
 - Run a **simulation** on the workspace and log in human-readable and machine-readable form
 ```shell
-ksim simulate <workspace-name> -l all # add a -v for verbosity
+flexsim simulate <workspace-name> -l all # add a -v for verbosity
 ```
 - Visualize what happened in the simulation by entering `<workspace-name>/logs/<cluster-name>`
 
 > [!TIP]
 > you can run a simulation for a workspace from everywhere, not just from the position of the workspace directory.
-> If you lose track of your workspace, just run a `ksim list` command to list all the existing workspaces and their location.
+> If you lose track of your workspace, just run a `flexsim list` command to list all the existing workspaces and their location.
