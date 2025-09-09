@@ -183,5 +183,5 @@ fi
 if ! command -v liqoctl &>/dev/null; then
   curl --fail -LS "https://github.com/liqotech/liqo/releases/download/v1.0.1/liqoctl-linux-amd64.tar.gz" | tar -xz
   install -o root -g root -m 0755 liqoctl /usr/local/bin/liqoctl
-  rm ./liqoctl-linux-amd64.tar.gz
+  rm ./liqoctl
 fi
