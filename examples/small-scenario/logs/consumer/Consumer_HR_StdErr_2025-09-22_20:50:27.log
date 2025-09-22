@@ -1,0 +1,349 @@
+[Queue: ClusterCreate][Command #0 Start] 20:50:27.992516 helm repo add cilium https://helm.cilium.io/
+[Queue: ClusterCreate][Command #0 End] 20:50:28.073781 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:28.074792 kind create cluster --name consumer --config - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml
+[Queue: ClusterCreate][Command #0] Creating cluster "consumer" ...
+[Queue: ClusterCreate][Command #0]  • Ensuring node image (kindest/node:v1.34.0) 🖼  ...
+[Queue: ClusterCreate][Command #0]  ✓ Ensuring node image (kindest/node:v1.34.0) 🖼
+[Queue: ClusterCreate][Command #0]  • Preparing nodes 📦   ...
+[Queue: ClusterCreate][Command #0]  ✓ Preparing nodes 📦 
+[Queue: ClusterCreate][Command #0]  • Writing configuration 📜  ...
+[Queue: ClusterCreate][Command #0]  ✓ Writing configuration 📜
+[Queue: ClusterCreate][Command #0]  • Starting control-plane 🕹️  ...
+[Queue: ClusterCreate][Command #0]  ✓ Starting control-plane 🕹️
+[Queue: ClusterCreate][Command #0]  • Installing StorageClass 💾  ...
+[Queue: ClusterCreate][Command #0]  ✓ Installing StorageClass 💾
+[Queue: ClusterCreate][Command #0] Set kubectl context to "kind-consumer"
+[Queue: ClusterCreate][Command #0] You can now use your cluster with:
+[Queue: ClusterCreate][Command #0] 
+[Queue: ClusterCreate][Command #0] kubectl cluster-info --context kind-consumer --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml
+[Queue: ClusterCreate][Command #0] 
+[Queue: ClusterCreate][Command #0] Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
+[Queue: ClusterCreate][Command #0 End] 20:50:50.529724 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:50.530089 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] Warning: unrecognized format "int64"
+[Queue: ClusterCreate][Command #0] Warning: unrecognized format "int32"
+[Queue: ClusterCreate][Command #0 End] 20:50:51.274613 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:51.275030 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0 End] 20:50:53.636238 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:53.636446 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0 End] 20:50:53.894973 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:54.990747 kind load docker-image quay.io/cilium/cilium:v1.17.6 --name consumer
+[Queue: ClusterCreate][Command #0] Image: "quay.io/cilium/cilium:v1.17.6" with ID "sha256:40c15f03eb84b156b28d26bbdb3616c61a3adebc0684bf6a4e4b0c1d26b0241d" not yet present on node "consumer-control-plane", loading...
+[Queue: ClusterCreate][Command #0 End] 20:52:05.569150 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:05.569342 helm install cilium cilium/cilium --version v1.17.6 --namespace kube-system --set image.PullPolicy=IfNotPresent --set ipam.mode=kubernetes -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --wait
+[Queue: ClusterCreate][Command #0] I0922 20:52:08.339886  123786 warnings.go:110] "Warning: spec.SessionAffinity is ignored for headless services"
+[Queue: ClusterCreate][Command #0 End] 20:52:34.579469 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:34.579618 kubectl apply -f fluidos-crds/ --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] Warning: unrecognized format "int64"
+[Queue: ClusterCreate][Command #0 End] 20:52:34.970183 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:34.970417 kubectl delete configmaps fluidos-mbmo-configmap --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0 End] 20:52:35.095972 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoInstall][Command #0 Start] 20:52:35.112269 node uncordon
+[Queue: LiqoInstall][Command #0 End] 20:52:35.144097 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoInstall][Command #0 Start] 20:52:35.144227 liqoctl install kind --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --cluster-id consumer
+[Queue: LiqoInstall][Command #0] Initializing installer
+[Queue: LiqoInstall][Command #0] INFO: Installer initialized
+[Queue: LiqoInstall][Command #0] Retrieving cluster configuration
+[Queue: LiqoInstall][Command #0] INFO: Cluster configuration correctly retrieved
+[Queue: LiqoInstall][Command #0] Generating installation parameters
+[Queue: LiqoInstall][Command #0] INFO: Installation parameters correctly generated
+[Queue: LiqoInstall][Command #0] Installing or upgrading Liqo... (this may take a few minutes)
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.470653  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.495193  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.557774  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.580596  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.628422  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.646749  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.925452  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.925473  127319 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.258454  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.258521  127319 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.344683  127319 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.419156  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.665416  127319 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.665457  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.937806  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.937869  127319 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.995102  127319 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] INFO: All Set! You can now proceed establishing a peering (liqoctl peer --help for more information)
+[Queue: LiqoInstall][Command #0] INFO: Make sure to use the same version of Liqo on all remote clusters
+[Queue: LiqoInstall][Command #0 End] 20:53:18.162264 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmRepoUpdate][Command #0 Start] 20:53:20.185144 helm repo add fluidos https://fluidos-project.github.io/node/ --force-update
+[Queue: HelmRepoUpdate][Command #0 End] 20:53:20.483311 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmFluidOSNodeInstall][Command #0 Start] 20:54:15.236701 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer
+[Queue: HelmFluidOSNodeInstall][Command #0 End] 20:54:15.394210 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmFluidOSNodeInstall][Command #0 Start] 20:53:20.487299 helm upgrade --install --devel --namespace fluidos --create-namespace node fluidos/node --set provider=kind --set common.configMaps.nodeIdentity.ip=172.18.0.2 --set common.configMaps.nodeIdentity.domain=consumer.fluidos.eu --set common.configMaps.nodeIdentity.nodeId=consumer --set rearController.service.gateway.nodePort.port=30000 --set networkManager.config.enableLocalDiscovery=false --wait --timeout 1h --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:53:21.017595  132449 warnings.go:110] "Warning: unrecognized format \"int64\""
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:54:01.518251  132449 warnings.go:110] "Warning: spec.privateKey.rotationPolicy: In cert-manager >= v1.18.0, the default value changed from `Never` to `Always`."
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:54:01.630891  132449 warnings.go:110] "Warning: spec.privateKey.rotationPolicy: In cert-manager >= v1.18.0, the default value changed from `Never` to `Always`."
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:54:01.774465  132449 warnings.go:110] "Warning: spec.privateKey.rotationPolicy: In cert-manager >= v1.18.0, the default value changed from `Never` to `Always`."
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:54:01.807560  132449 warnings.go:110] "Warning: metadata.annotations[kubernetes.io/enforce-mountable-secrets]: deprecated in v1.32+; prefer separate namespaces to isolate access to mounted secrets"
+[Queue: HelmFluidOSNodeInstall][Command #0 End] 20:54:16.025762 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmFluidOSNodeInstall][Command #0 Start] 20:54:17.842682 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer
+[Queue: HelmFluidOSNodeInstall][Command #0 End] 20:54:18.011122 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoPeer][Command #0 Start] 20:54:26.799924 liqoctl peer --remote-kubeconfig /home/ubuntu/.kwok/clusters/provider-italy/kubeconfig.yaml --gw-server-service-type NodePort --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --cpu 80 --memory 80Gi --pods 1270
+[Queue: LiqoPeer][Command #0] Retrieving network configuration
+[Queue: LiqoPeer][Command #0] INFO: Network configuration correctly retrieved
+[Queue: LiqoPeer][Command #0] Retrieving network configuration
+[Queue: LiqoPeer][Command #0] INFO: Network configuration correctly retrieved
+[Queue: LiqoPeer][Command #0] Setting up network configuration
+[Queue: LiqoPeer][Command #0] INFO: Network configuration correctly set up
+[Queue: LiqoPeer][Command #0] Setting up network configuration
+[Queue: LiqoPeer][Command #0] INFO: Network configuration correctly set up
+[Queue: LiqoPeer][Command #0] Waiting for configuration to be applied
+[Queue: LiqoPeer][Command #0] INFO: Configuration applied successfully
+[Queue: LiqoPeer][Command #0] Waiting for configuration to be applied
+[Queue: LiqoPeer][Command #0] INFO: Configuration applied successfully
+[Queue: LiqoPeer][Command #0] Checking gateway server template "wireguard-server/liqo"
+[Queue: LiqoPeer][Command #0] INFO: Gateway server template "wireguard-server/liqo" correctly checked
+[Queue: LiqoPeer][Command #0] Checking gateway client template "wireguard-client/liqo"
+[Queue: LiqoPeer][Command #0] INFO: Gateway client template "wireguard-client/liqo" correctly checked
+[Queue: LiqoPeer][Command #0] Checking network is initialized correctly
+[Queue: LiqoPeer][Command #0] INFO: Network correctly initialized
+[Queue: LiqoPeer][Command #0] Checking network is initialized correctly
+[Queue: LiqoPeer][Command #0] INFO: Network correctly initialized
+[Queue: LiqoPeer][Command #0] Setting up gateway server
+[Queue: LiqoPeer][Command #0] INFO: Gateway server correctly set up
+[Queue: LiqoPeer][Command #0] Waiting for gateway pod gw-consumer to be ready
+[Queue: LiqoPeer][Command #0] INFO: Gateway pod gw-consumer is ready
+[Queue: LiqoPeer][Command #0] Waiting for gateway server Service to be created
+[Queue: LiqoPeer][Command #0] INFO: Gateway server Service created successfully
+[Queue: LiqoPeer][Command #0] Setting up gateway client
+[Queue: LiqoPeer][Command #0] INFO: Gateway client correctly set up
+[Queue: LiqoPeer][Command #0] Waiting for gateway pod gw-provider-italy to be ready
+[Queue: LiqoPeer][Command #0] INFO: Gateway pod gw-provider-italy is ready
+[Queue: LiqoPeer][Command #0] Waiting for gateway server Secret to be created
+[Queue: LiqoPeer][Command #0] INFO: Gateway server Secret created successfully
+[Queue: LiqoPeer][Command #0] Creating public key
+[Queue: LiqoPeer][Command #0] INFO: Public key correctly created
+[Queue: LiqoPeer][Command #0] Waiting for gateway client Secret to be created
+[Queue: LiqoPeer][Command #0] INFO: Gateway client Secret created successfully
+[Queue: LiqoPeer][Command #0] Creating public key
+[Queue: LiqoPeer][Command #0] INFO: Public key correctly created
+[Queue: LiqoPeer][Command #0] Waiting for Connection to be created
+[Queue: LiqoPeer][Command #0] INFO: Connection created successfully
+[Queue: LiqoPeer][Command #0] Waiting for Connection to be created
+[Queue: LiqoPeer][Command #0] INFO: Connection created successfully
+[Queue: LiqoPeer][Command #0] Waiting for Connection status to be established
+[Queue: LiqoPeer][Command #0] INFO: Connection is established
+[Queue: LiqoPeer][Command #0] Waiting for Connection status to be established
+[Queue: LiqoPeer][Command #0] INFO: Connection is established
+[Queue: LiqoPeer][Command #0] Ensuring tenant namespace
+[Queue: LiqoPeer][Command #0] INFO: Tenant namespace correctly ensured
+[Queue: LiqoPeer][Command #0] Ensuring tenant namespace
+[Queue: LiqoPeer][Command #0] INFO: Tenant namespace correctly ensured
+[Queue: LiqoPeer][Command #0] Ensuring nonce secret
+[Queue: LiqoPeer][Command #0] INFO: Nonce secret ensured
+[Queue: LiqoPeer][Command #0] Waiting for nonce to be generated
+[Queue: LiqoPeer][Command #0] INFO: Nonce generated successfully
+[Queue: LiqoPeer][Command #0] Retrieving nonce
+[Queue: LiqoPeer][Command #0] INFO: Nonce retrieved
+[Queue: LiqoPeer][Command #0] Ensuring signed nonce
+[Queue: LiqoPeer][Command #0] INFO: Signed nonce secret ensured
+[Queue: LiqoPeer][Command #0] Waiting for nonce to be signed
+[Queue: LiqoPeer][Command #0] INFO: Nonce is signed
+[Queue: LiqoPeer][Command #0] Retrieving signed nonce
+[Queue: LiqoPeer][Command #0] INFO: Signed nonce retrieved
+[Queue: LiqoPeer][Command #0] Generating tenant
+[Queue: LiqoPeer][Command #0] INFO: Tenant correctly generated
+[Queue: LiqoPeer][Command #0] Applying tenant on provider cluster
+[Queue: LiqoPeer][Command #0] INFO: Tenant correctly applied on provider cluster
+[Queue: LiqoPeer][Command #0] Waiting for tenant status to be filled
+[Queue: LiqoPeer][Command #0] INFO: Tenant status is filled
+[Queue: LiqoPeer][Command #0] Generating identity
+[Queue: LiqoPeer][Command #0] INFO: Identity correctly generated
+[Queue: LiqoPeer][Command #0] Applying identity on consumer cluster
+[Queue: LiqoPeer][Command #0] INFO: Identity correctly applied on consumer cluster
+[Queue: LiqoPeer][Command #0] Waiting for identity status to be filled
+[Queue: LiqoPeer][Command #0] INFO: Identity status is filled
+[Queue: LiqoPeer][Command #0] Creating ResourceSlice
+[Queue: LiqoPeer][Command #0] INFO: ResourceSlice created
+[Queue: LiqoPeer][Command #0] Waiting for ResourceSlice authentication to be accepted
+[Queue: LiqoPeer][Command #0] INFO: ResourceSlice authentication: Accepted
+[Queue: LiqoPeer][Command #0] INFO: ResourceSlice resources: Accepted
+[Queue: LiqoPeer][Command #0 End] 20:55:00.952017 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoPeer][Command #0 Start] 20:54:26.799875 liqoctl peer --remote-kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --gw-server-service-type NodePort --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --cpu 80 --memory 80Gi --pods 1270
+[Queue: LiqoPeer][Command #0] Retrieving network configuration
+[Queue: LiqoPeer][Command #0] INFO: Network configuration correctly retrieved
+[Queue: LiqoPeer][Command #0] Retrieving network configuration
+[Queue: LiqoPeer][Command #0] INFO: Network configuration correctly retrieved
+[Queue: LiqoPeer][Command #0] Setting up network configuration
+[Queue: LiqoPeer][Command #0] INFO: Network configuration correctly set up
+[Queue: LiqoPeer][Command #0] Setting up network configuration
+[Queue: LiqoPeer][Command #0] INFO: Network configuration correctly set up
+[Queue: LiqoPeer][Command #0] Waiting for configuration to be applied
+[Queue: LiqoPeer][Command #0] INFO: Configuration applied successfully
+[Queue: LiqoPeer][Command #0] Waiting for configuration to be applied
+[Queue: LiqoPeer][Command #0] INFO: Configuration applied successfully
+[Queue: LiqoPeer][Command #0] Checking gateway server template "wireguard-server/liqo"
+[Queue: LiqoPeer][Command #0] INFO: Gateway server template "wireguard-server/liqo" correctly checked
+[Queue: LiqoPeer][Command #0] Checking gateway client template "wireguard-client/liqo"
+[Queue: LiqoPeer][Command #0] INFO: Gateway client template "wireguard-client/liqo" correctly checked
+[Queue: LiqoPeer][Command #0] Checking network is initialized correctly
+[Queue: LiqoPeer][Command #0] INFO: Network correctly initialized
+[Queue: LiqoPeer][Command #0] Checking network is initialized correctly
+[Queue: LiqoPeer][Command #0] INFO: Network correctly initialized
+[Queue: LiqoPeer][Command #0] Setting up gateway server
+[Queue: LiqoPeer][Command #0] INFO: Gateway server correctly set up
+[Queue: LiqoPeer][Command #0] Waiting for gateway pod gw-consumer to be ready
+[Queue: LiqoPeer][Command #0] INFO: Gateway pod gw-consumer is ready
+[Queue: LiqoPeer][Command #0] Waiting for gateway server Service to be created
+[Queue: LiqoPeer][Command #0] INFO: Gateway server Service created successfully
+[Queue: LiqoPeer][Command #0] Setting up gateway client
+[Queue: LiqoPeer][Command #0] INFO: Gateway client correctly set up
+[Queue: LiqoPeer][Command #0] Waiting for gateway pod gw-provider-germany to be ready
+[Queue: LiqoPeer][Command #0] INFO: Gateway pod gw-provider-germany is ready
+[Queue: LiqoPeer][Command #0] Waiting for gateway server Secret to be created
+[Queue: LiqoPeer][Command #0] INFO: Gateway server Secret created successfully
+[Queue: LiqoPeer][Command #0] Creating public key
+[Queue: LiqoPeer][Command #0] INFO: Public key correctly created
+[Queue: LiqoPeer][Command #0] Waiting for gateway client Secret to be created
+[Queue: LiqoPeer][Command #0] INFO: Gateway client Secret created successfully
+[Queue: LiqoPeer][Command #0] Creating public key
+[Queue: LiqoPeer][Command #0] INFO: Public key correctly created
+[Queue: LiqoPeer][Command #0] Waiting for Connection to be created
+[Queue: LiqoPeer][Command #0] INFO: Connection created successfully
+[Queue: LiqoPeer][Command #0] Waiting for Connection to be created
+[Queue: LiqoPeer][Command #0] INFO: Connection created successfully
+[Queue: LiqoPeer][Command #0] Waiting for Connection status to be established
+[Queue: LiqoPeer][Command #0] INFO: Connection is established
+[Queue: LiqoPeer][Command #0] Waiting for Connection status to be established
+[Queue: LiqoPeer][Command #0] INFO: Connection is established
+[Queue: LiqoPeer][Command #0] Ensuring tenant namespace
+[Queue: LiqoPeer][Command #0] INFO: Tenant namespace correctly ensured
+[Queue: LiqoPeer][Command #0] Ensuring tenant namespace
+[Queue: LiqoPeer][Command #0] INFO: Tenant namespace correctly ensured
+[Queue: LiqoPeer][Command #0] Ensuring nonce secret
+[Queue: LiqoPeer][Command #0] INFO: Nonce secret ensured
+[Queue: LiqoPeer][Command #0] Waiting for nonce to be generated
+[Queue: LiqoPeer][Command #0] INFO: Nonce generated successfully
+[Queue: LiqoPeer][Command #0] Retrieving nonce
+[Queue: LiqoPeer][Command #0] INFO: Nonce retrieved
+[Queue: LiqoPeer][Command #0] Ensuring signed nonce
+[Queue: LiqoPeer][Command #0] INFO: Signed nonce secret ensured
+[Queue: LiqoPeer][Command #0] Waiting for nonce to be signed
+[Queue: LiqoPeer][Command #0] INFO: Nonce is signed
+[Queue: LiqoPeer][Command #0] Retrieving signed nonce
+[Queue: LiqoPeer][Command #0] INFO: Signed nonce retrieved
+[Queue: LiqoPeer][Command #0] Generating tenant
+[Queue: LiqoPeer][Command #0] INFO: Tenant correctly generated
+[Queue: LiqoPeer][Command #0] Applying tenant on provider cluster
+[Queue: LiqoPeer][Command #0] INFO: Tenant correctly applied on provider cluster
+[Queue: LiqoPeer][Command #0] Waiting for tenant status to be filled
+[Queue: LiqoPeer][Command #0] INFO: Tenant status is filled
+[Queue: LiqoPeer][Command #0] Generating identity
+[Queue: LiqoPeer][Command #0] INFO: Identity correctly generated
+[Queue: LiqoPeer][Command #0] Applying identity on consumer cluster
+[Queue: LiqoPeer][Command #0] INFO: Identity correctly applied on consumer cluster
+[Queue: LiqoPeer][Command #0] Waiting for identity status to be filled
+[Queue: LiqoPeer][Command #0] INFO: Identity status is filled
+[Queue: LiqoPeer][Command #0] Creating ResourceSlice
+[Queue: LiqoPeer][Command #0] INFO: ResourceSlice created
+[Queue: LiqoPeer][Command #0] Waiting for ResourceSlice authentication to be accepted
+[Queue: LiqoPeer][Command #0] INFO: ResourceSlice authentication: Accepted
+[Queue: LiqoPeer][Command #0] INFO: ResourceSlice resources: Accepted
+[Queue: LiqoPeer][Command #0 End] 20:55:00.957970 Executed at Time: 0.000000 Seconds
+
+[Queue: FluidOSEnd][Command #0 Start] 20:55:00.958635 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --namespace fluidos
+[Queue: FluidOSEnd][Command #0 End] 20:55:01.228131 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoOffload][Command #0 Start] 20:55:01.228832 kubectl create namespace liqo-namespace --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer
+[Queue: LiqoOffload][Command #0 End] 20:55:01.350533 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoOffload][Command #0 Start] 20:55:01.350768 liqoctl offload namespace liqo-namespace --namespace-mapping-strategy EnforceSameName --pod-offloading-strategy LocalAndRemote --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml
+[Queue: LiqoOffload][Command #0] Enabling namespace offloading for "liqo-namespace"
+[Queue: LiqoOffload][Command #0] INFO: Offloading of namespace "liqo-namespace" correctly enabled
+[Queue: LiqoOffload][Command #0] Waiting for offloading of namespace "liqo-namespace" to complete
+[Queue: LiqoOffload][Command #0] INFO: Offloading completed successfully
+[Queue: LiqoOffload][Command #0 End] 20:55:01.617311 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoEnd][Command #0 Start] 20:55:01.617455 node cordon
+[Queue: LiqoEnd][Command #0 End] 20:55:01.635830 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoEnd][Command #0 Start] 20:55:01.636035 node uncordon
+[Queue: LiqoEnd][Command #0 End] 20:55:01.640761 Executed at Time: 0.000000 Seconds
+
+[Queue: Consumer-Queue][Command #5 Start] 20:55:07.711260 kubectl apply -f fluidos-deployment.yaml --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --namespace liqo-namespace
+[Queue: Consumer-Queue][Command #5 End] 20:55:07.886434 Executed at Time: 1.001232 Seconds
+
+[Queue: Consumer-Queue][Command #1 Start] 20:55:10.711215 kubectl get no -o wide --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer
+[Queue: Consumer-Queue][Command #1 End] 20:55:10.852110 Executed at Time: 4.001293 Seconds
+
+[Queue: Consumer-Queue][Command #2 Start] 20:55:10.711414 kubectl get po -o wide --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --namespace fluidos
+[Queue: Consumer-Queue][Command #2 End] 20:55:10.872012 Executed at Time: 4.001411 Seconds
+
+[Queue: Consumer-Queue][Command #4 Start] 20:55:11.711316 kubectl get solver -o yaml --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --namespace fluidos
+[Queue: Consumer-Queue][Command #4 End] 20:55:11.859657 Executed at Time: 5.001333 Seconds
+
+[Queue: Consumer-Queue][Command #3 Start] 20:55:16.710423 kubectl get po -o wide --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --all-namespaces
+[Queue: Consumer-Queue][Command #3 End] 20:55:16.935937 Executed at Time: 10.000422 Seconds
+
+[Queue: Metaorchestrator][Command #0 Start] 20:55:01.708445 kopf run -m fluidos_model_orchestrator
+[Queue: Metaorchestrator][Command #0] Traceback (most recent call last):
+[Queue: Metaorchestrator][Command #0]   File "/usr/local/bin/kopf", line 8, in <module>
+[Queue: Metaorchestrator][Command #0]     sys.exit(main())
+[Queue: Metaorchestrator][Command #0]              ^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/click/core.py", line 1462, in __call__
+[Queue: Metaorchestrator][Command #0]     return self.main(*args, **kwargs)
+[Queue: Metaorchestrator][Command #0]            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/click/core.py", line 1383, in main
+[Queue: Metaorchestrator][Command #0]     rv = self.invoke(ctx)
+[Queue: Metaorchestrator][Command #0]          ^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/click/core.py", line 1850, in invoke
+[Queue: Metaorchestrator][Command #0]     return _process_result(sub_ctx.command.invoke(sub_ctx))
+[Queue: Metaorchestrator][Command #0]                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/click/core.py", line 1246, in invoke
+[Queue: Metaorchestrator][Command #0]     return ctx.invoke(self.callback, **ctx.params)
+[Queue: Metaorchestrator][Command #0]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/click/core.py", line 814, in invoke
+[Queue: Metaorchestrator][Command #0]     return callback(*args, **kwargs)
+[Queue: Metaorchestrator][Command #0]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/kopf/cli.py", line 64, in wrapper
+[Queue: Metaorchestrator][Command #0]     return fn(*args, **kwargs)
+[Queue: Metaorchestrator][Command #0]            ^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/click/decorators.py", line 93, in new_func
+[Queue: Metaorchestrator][Command #0]     return ctx.invoke(f, obj, *args, **kwargs)
+[Queue: Metaorchestrator][Command #0]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/click/core.py", line 814, in invoke
+[Queue: Metaorchestrator][Command #0]     return callback(*args, **kwargs)
+[Queue: Metaorchestrator][Command #0]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/kopf/cli.py", line 108, in run
+[Queue: Metaorchestrator][Command #0]     loaders.preload(
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/kopf/_cogs/helpers/loaders.py", line 47, in preload
+[Queue: Metaorchestrator][Command #0]     importlib.import_module(name)
+[Queue: Metaorchestrator][Command #0]   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+[Queue: Metaorchestrator][Command #0]     return _bootstrap._gcd_import(name[level:], package, level)
+[Queue: Metaorchestrator][Command #0]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+[Queue: Metaorchestrator][Command #0]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+[Queue: Metaorchestrator][Command #0]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+[Queue: Metaorchestrator][Command #0]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+[Queue: Metaorchestrator][Command #0]   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+[Queue: Metaorchestrator][Command #0]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+[Queue: Metaorchestrator][Command #0]   File "/home/ubuntu/fluidos-modelbased-metaorchestrator/metaorchestrator/lib/python3.12/site-packages/fluidos_model_orchestrator/__init__.py", line 2, in <module>
+[Queue: Metaorchestrator][Command #0]     from fluidos_model_orchestrator.daemons_and_times.flavor import daemons_for_flavors_observation  # noqa
+[Queue: Metaorchestrator][Command #0]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[Queue: Metaorchestrator][Command #0] ModuleNotFoundError: No module named 'fluidos_model_orchestrator.daemons_and_times'
+[Queue: Metaorchestrator][Command #0 End] 20:55:46.885309 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterDelete][Command #0 Start] 20:55:46.885993 kind delete cluster --name consumer
+[Queue: ClusterDelete][Command #0] Deleting cluster "consumer" ...
+[Queue: ClusterDelete][Command #0] Deleted nodes: ["consumer-control-plane"]
+[Queue: ClusterDelete][Command #0 End] 20:55:49.903034 Executed at Time: 40.176148 Seconds
+
