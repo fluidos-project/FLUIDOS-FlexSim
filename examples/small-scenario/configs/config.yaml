@@ -1,0 +1,55 @@
+kind: SimConfiguration
+apiVersion: k8s-sim.fbk.eu/v1alpha1
+liqo:
+    consumer: consumer
+    offload:
+        - namespace: liqo-namespace
+          clusterSelector: []
+          namespaceStrategy: EnforceSameName
+          remoteNamespace: ""
+          podStrategy: LocalAndRemote
+    runtimeClass: false
+clusters:
+    - clusterName: consumer
+      kubeconfig: ""
+      runtime: ""
+      kwokConfigs: []
+      nodes: []
+      scheduler:
+        schedulerImage: ""
+        schedulerConfigFile: ""
+        verbosity: 0
+      auditLogging:
+        filename: ""
+      componentLog: []
+      commandsConfig: consumer.yaml
+    - clusterName: provider-italy
+      kubeconfig: ""
+      runtime: ""
+      kwokConfigs: []
+      nodes:
+        - filename: ""
+          count: 5
+      scheduler:
+        schedulerImage: ""
+        schedulerConfigFile: ""
+        verbosity: 0
+      auditLogging:
+        filename: ""
+      componentLog: []
+      commandsConfig: provider-IT.yaml
+    - clusterName: provider-germany
+      kubeconfig: ""
+      runtime: ""
+      kwokConfigs: []
+      nodes:
+        - filename: ""
+          count: 5
+      scheduler:
+        schedulerImage: ""
+        schedulerConfigFile: ""
+        verbosity: 0
+      auditLogging:
+        filename: ""
+      componentLog: []
+      commandsConfig: provider-DE.yaml

@@ -1,0 +1,30 @@
+kind: SimCommandsConfiguration
+apiVersion: k8s-sim.fbk.eu/v1alpha1
+metadata:
+    name: Consumer
+spec:
+    queues:
+        - name: Consumer-Queue
+          kubeconfig: ""
+          sequence:
+            - exec: kubectl get no -o wide
+              time: 4
+            - command: po get
+              time: 4
+              args:
+                - -o wide
+              namespace: fluidos
+            - command: po get
+              time: 10
+              args:
+                - -o wide
+              namespace: all
+            - command: solver get
+              time: 5
+              args:
+                - -o yaml
+              namespace: fluidos
+            - command: deployment apply
+              time: 1
+              filename: fluidos-deployment.yaml
+              namespace: liqo-namespace
