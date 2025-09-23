@@ -1,0 +1,136 @@
+[Queue: ClusterCreate][Command #0 Start] 20:50:33.271742 kind create cluster --name provider-germany --config - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml
+[Queue: ClusterCreate][Command #0 End] 20:50:53.606785 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:53.607889 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/attaches.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterattaches.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterexecs.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterlogs.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterportforwards.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterresourceusages.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/execs.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/logs.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/metrics.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/portforwards.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/resourceusages.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/stages.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] serviceaccount/kwok-controller created
+[Queue: ClusterCreate][Command #0] clusterrole.rbac.authorization.k8s.io/kwok-controller created
+[Queue: ClusterCreate][Command #0] clusterrolebinding.rbac.authorization.k8s.io/kwok-controller created
+[Queue: ClusterCreate][Command #0] configmap/kwok created
+[Queue: ClusterCreate][Command #0] service/kwok-controller created
+[Queue: ClusterCreate][Command #0] deployment.apps/kwok-controller created
+[Queue: ClusterCreate][Command #0] flowschema.flowcontrol.apiserver.k8s.io/kwok-controller created
+[Queue: ClusterCreate][Command #0 End] 20:50:54.397359 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:54.397623 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/node-heartbeat-with-lease created
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/node-initialize created
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/pod-complete created
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/pod-delete created
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/pod-ready created
+[Queue: ClusterCreate][Command #0 End] 20:50:56.710178 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:56.710477 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] clusterresourceusage.kwok.x-k8s.io/usage-from-annotation created
+[Queue: ClusterCreate][Command #0] metric.kwok.x-k8s.io/metrics-resource created
+[Queue: ClusterCreate][Command #0 End] 20:50:56.979148 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:58.025514 kind load docker-image quay.io/cilium/cilium:v1.17.6 --name provider-germany
+[Queue: ClusterCreate][Command #0 End] 20:52:05.573194 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:05.573420 helm install cilium cilium/cilium --version v1.17.6 --namespace kube-system --set image.PullPolicy=IfNotPresent --set ipam.mode=kubernetes -f - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --wait
+[Queue: ClusterCreate][Command #0] NAME: cilium
+[Queue: ClusterCreate][Command #0] LAST DEPLOYED: Mon Sep 22 20:52:06 2025
+[Queue: ClusterCreate][Command #0] NAMESPACE: kube-system
+[Queue: ClusterCreate][Command #0] STATUS: deployed
+[Queue: ClusterCreate][Command #0] REVISION: 1
+[Queue: ClusterCreate][Command #0] TEST SUITE: None
+[Queue: ClusterCreate][Command #0] NOTES:
+[Queue: ClusterCreate][Command #0] You have successfully installed Cilium with Hubble.
+[Queue: ClusterCreate][Command #0] 
+[Queue: ClusterCreate][Command #0] Your release version is 1.17.6.
+[Queue: ClusterCreate][Command #0] 
+[Queue: ClusterCreate][Command #0] For any further help, visit https://docs.cilium.io/en/v1.17/gettinghelp
+[Queue: ClusterCreate][Command #0 End] 20:52:32.597209 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:32.597370 kubectl apply -f fluidos-crds/ --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/discoveries.advertisement.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/peeringcandidates.advertisement.fluidos.eu created
+[Queue: ClusterCreate][Command #0] configmap/fluidos-mbmo-configmap created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/fluidosdeployments.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/allocations.nodecore.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/flavors.nodecore.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/serviceblueprints.nodecore.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/solvers.nodecore.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/contracts.reservation.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/reservations.reservation.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/transactions.reservation.fluidos.eu created
+[Queue: ClusterCreate][Command #0 End] 20:52:32.999402 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:32.999664 kubectl delete configmaps fluidos-mbmo-configmap --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] configmap "fluidos-mbmo-configmap" deleted from default namespace
+[Queue: ClusterCreate][Command #0 End] 20:52:33.097782 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoInstall][Command #0 Start] 20:52:35.112136 node uncordon
+[Queue: LiqoInstall][Command #0] Uncordoned node provider-germany-control-plane
+[Queue: LiqoInstall][Command #0 End] 20:52:35.139578 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoInstall][Command #0 Start] 20:52:35.139747 liqoctl install kind --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --cluster-id provider-germany
+[Queue: LiqoInstall][Command #0 End] 20:53:10.072813 Executed at Time: 0.000000 Seconds
+
+[Queue: Topology][Command #0 Start] 20:53:20.171721 node create
+[Queue: Topology][Command #0] Created Node: default-node-1
+[Queue: Topology][Command #0] Created Node: default-node-0
+[Queue: Topology][Command #0] Created Node: default-node-3
+[Queue: Topology][Command #0] Created Node: default-node-2
+[Queue: Topology][Command #0] Created Node: default-node-4
+[Queue: Topology][Command #0 End] 20:53:20.184680 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmFluidOSNodeInstall][Command #0 Start] 20:53:20.488367 helm upgrade --install --devel --namespace fluidos --create-namespace node fluidos/node --set provider=kind --set common.configMaps.nodeIdentity.ip=172.18.0.4 --set common.configMaps.nodeIdentity.domain=provider-germany.fluidos.eu --set common.configMaps.nodeIdentity.nodeId=provider-germany --set rearController.service.gateway.nodePort.port=30002 --set networkManager.config.enableLocalDiscovery=false --wait --timeout 1h --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml
+[Queue: HelmFluidOSNodeInstall][Command #0] Release "node" does not exist. Installing it now.
+[Queue: HelmFluidOSNodeInstall][Command #0] NAME: node
+[Queue: HelmFluidOSNodeInstall][Command #0] LAST DEPLOYED: Mon Sep 22 20:53:21 2025
+[Queue: HelmFluidOSNodeInstall][Command #0] NAMESPACE: fluidos
+[Queue: HelmFluidOSNodeInstall][Command #0] STATUS: deployed
+[Queue: HelmFluidOSNodeInstall][Command #0] REVISION: 1
+[Queue: HelmFluidOSNodeInstall][Command #0] TEST SUITE: None
+[Queue: HelmFluidOSNodeInstall][Command #0 End] 20:54:17.842497 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoEnd][Command #0 Start] 20:55:01.680365 node cordon
+[Queue: LiqoEnd][Command #0] Cordoned node provider-germany-control-plane
+[Queue: LiqoEnd][Command #0 End] 20:55:01.694399 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoEnd][Command #0 Start] 20:55:01.694468 node uncordon
+[Queue: LiqoEnd][Command #0] Uncordoned node default-node-4
+[Queue: LiqoEnd][Command #0] Uncordoned node default-node-0
+[Queue: LiqoEnd][Command #0] Uncordoned node default-node-3
+[Queue: LiqoEnd][Command #0] Uncordoned node default-node-2
+[Queue: LiqoEnd][Command #0] Uncordoned node default-node-1
+[Queue: LiqoEnd][Command #0 End] 20:55:01.707099 Executed at Time: 0.000000 Seconds
+
+[Queue: DE-Queue][Command #3 Start] 20:55:08.710762 kubectl get no -o wide --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context kind-provider-germany
+[Queue: DE-Queue][Command #3] NAME                             STATUS                     ROLES           AGE     VERSION       INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
+[Queue: DE-Queue][Command #3] default-node-0                   Ready                      worker          108s    kwok-v0.7.0   10.244.0.223   <none>        <unknown>                        kwok-v0.7.0        kwok-v0.7.0
+[Queue: DE-Queue][Command #3] default-node-1                   Ready                      worker          108s    kwok-v0.7.0   10.244.0.223   <none>        <unknown>                        kwok-v0.7.0        kwok-v0.7.0
+[Queue: DE-Queue][Command #3] default-node-2                   Ready                      worker          108s    kwok-v0.7.0   10.244.0.223   <none>        <unknown>                        kwok-v0.7.0        kwok-v0.7.0
+[Queue: DE-Queue][Command #3] default-node-3                   Ready                      worker          108s    kwok-v0.7.0   10.244.0.223   <none>        <unknown>                        kwok-v0.7.0        kwok-v0.7.0
+[Queue: DE-Queue][Command #3] default-node-4                   Ready                      worker          108s    kwok-v0.7.0   10.244.0.223   <none>        <unknown>                        kwok-v0.7.0        kwok-v0.7.0
+[Queue: DE-Queue][Command #3] provider-germany-control-plane   Ready,SchedulingDisabled   control-plane   4m20s   v1.34.0       172.18.0.4     <none>        Debian GNU/Linux 12 (bookworm)   6.8.0-79-generic   containerd://2.1.3
+[Queue: DE-Queue][Command #3 End] 20:55:08.859927 Executed at Time: 2.000776 Seconds
+
+[Queue: DE-Queue][Command #1 Start] 20:55:21.710170 kubectl get po -o wide --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context kind-provider-germany --namespace liqo-namespace
+[Queue: DE-Queue][Command #1 End] 20:55:21.863261 Executed at Time: 15.000164 Seconds
+
+[Queue: DE-Queue][Command #2 Start] 20:55:46.710417 kubectl get flavors --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context kind-provider-germany --namespace fluidos
+[Queue: DE-Queue][Command #2] NAME                                       PROVIDER ID   TYPE      AVAILABLE   AGE   KUBERNETES NODE OWNER
+[Queue: DE-Queue][Command #2] provider-germany.fluidos.eu-k8slice-3f81   oglula2huu    K8Slice   true        80s   default-node-4
+[Queue: DE-Queue][Command #2] provider-germany.fluidos.eu-k8slice-74be   oglula2huu    K8Slice   true        80s   default-node-2
+[Queue: DE-Queue][Command #2] provider-germany.fluidos.eu-k8slice-7a4b   oglula2huu    K8Slice   true        80s   default-node-3
+[Queue: DE-Queue][Command #2] provider-germany.fluidos.eu-k8slice-acb0   oglula2huu    K8Slice   true        80s   default-node-1
+[Queue: DE-Queue][Command #2] provider-germany.fluidos.eu-k8slice-d8ab   oglula2huu    K8Slice   true        80s   default-node-0
+[Queue: DE-Queue][Command #2 End] 20:55:46.861162 Executed at Time: 40.000436 Seconds
+
+[Queue: ClusterDelete][Command #0 Start] 20:55:52.694354 kind delete cluster --name provider-germany
+[Queue: ClusterDelete][Command #0 End] 20:55:55.219588 Executed at Time: 45.984525 Seconds
+

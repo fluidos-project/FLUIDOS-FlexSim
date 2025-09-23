@@ -1,0 +1,204 @@
+[Queue: ClusterCreate][Command #0 Start] 20:58:36.707146 helm repo add cilium https://helm.cilium.io/
+[Queue: ClusterCreate][Command #0] "cilium" already exists with the same configuration, skipping
+[Queue: ClusterCreate][Command #0 End] 20:58:36.788123 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:58:36.789142 kind create cluster --name consumer --config - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml
+[Queue: ClusterCreate][Command #0 End] 20:58:57.437497 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:58:57.438013 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/attaches.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterattaches.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterexecs.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterlogs.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterportforwards.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/clusterresourceusages.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/execs.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/logs.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/metrics.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/portforwards.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/resourceusages.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/stages.kwok.x-k8s.io created
+[Queue: ClusterCreate][Command #0] serviceaccount/kwok-controller created
+[Queue: ClusterCreate][Command #0] clusterrole.rbac.authorization.k8s.io/kwok-controller created
+[Queue: ClusterCreate][Command #0] clusterrolebinding.rbac.authorization.k8s.io/kwok-controller created
+[Queue: ClusterCreate][Command #0] configmap/kwok created
+[Queue: ClusterCreate][Command #0] service/kwok-controller created
+[Queue: ClusterCreate][Command #0] deployment.apps/kwok-controller created
+[Queue: ClusterCreate][Command #0] flowschema.flowcontrol.apiserver.k8s.io/kwok-controller created
+[Queue: ClusterCreate][Command #0 End] 20:58:58.343864 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:58:58.344201 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/node-heartbeat-with-lease created
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/node-initialize created
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/pod-complete created
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/pod-delete created
+[Queue: ClusterCreate][Command #0] stage.kwok.x-k8s.io/pod-ready created
+[Queue: ClusterCreate][Command #0 End] 20:59:00.728585 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:59:00.728758 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] clusterresourceusage.kwok.x-k8s.io/usage-from-annotation created
+[Queue: ClusterCreate][Command #0] metric.kwok.x-k8s.io/metrics-resource created
+[Queue: ClusterCreate][Command #0 End] 20:59:00.999157 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:59:02.151892 kind load docker-image quay.io/cilium/cilium:v1.17.6 --name consumer
+[Queue: ClusterCreate][Command #0 End] 21:00:13.953750 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 21:00:13.954077 helm install cilium cilium/cilium --version v1.17.6 --namespace kube-system --set image.PullPolicy=IfNotPresent --set ipam.mode=kubernetes -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --wait
+[Queue: ClusterCreate][Command #0] NAME: cilium
+[Queue: ClusterCreate][Command #0] LAST DEPLOYED: Mon Sep 22 21:00:14 2025
+[Queue: ClusterCreate][Command #0] NAMESPACE: kube-system
+[Queue: ClusterCreate][Command #0] STATUS: deployed
+[Queue: ClusterCreate][Command #0] REVISION: 1
+[Queue: ClusterCreate][Command #0] TEST SUITE: None
+[Queue: ClusterCreate][Command #0] NOTES:
+[Queue: ClusterCreate][Command #0] You have successfully installed Cilium with Hubble.
+[Queue: ClusterCreate][Command #0] 
+[Queue: ClusterCreate][Command #0] Your release version is 1.17.6.
+[Queue: ClusterCreate][Command #0] 
+[Queue: ClusterCreate][Command #0] For any further help, visit https://docs.cilium.io/en/v1.17/gettinghelp
+[Queue: ClusterCreate][Command #0 End] 21:00:38.892509 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 21:00:38.892647 kubectl apply -f fluidos-crds/ --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/discoveries.advertisement.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/peeringcandidates.advertisement.fluidos.eu created
+[Queue: ClusterCreate][Command #0] configmap/fluidos-mbmo-configmap created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/fluidosdeployments.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/allocations.nodecore.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/flavors.nodecore.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/serviceblueprints.nodecore.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/solvers.nodecore.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/contracts.reservation.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/reservations.reservation.fluidos.eu created
+[Queue: ClusterCreate][Command #0] customresourcedefinition.apiextensions.k8s.io/transactions.reservation.fluidos.eu created
+[Queue: ClusterCreate][Command #0 End] 21:00:39.382748 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 21:00:39.383001 kubectl delete configmaps fluidos-mbmo-configmap --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] configmap "fluidos-mbmo-configmap" deleted from default namespace
+[Queue: ClusterCreate][Command #0 End] 21:00:39.519313 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoInstall][Command #0 Start] 21:00:46.026358 node uncordon
+[Queue: LiqoInstall][Command #0] Uncordoned node consumer-control-plane
+[Queue: LiqoInstall][Command #0 End] 21:00:46.048546 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoInstall][Command #0 Start] 21:00:46.048687 liqoctl install kind --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --cluster-id consumer
+[Queue: LiqoInstall][Command #0 End] 21:01:52.709575 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmRepoUpdate][Command #0 Start] 21:02:09.905134 helm repo add fluidos https://fluidos-project.github.io/node/ --force-update
+[Queue: HelmRepoUpdate][Command #0] "fluidos" has been added to your repositories
+[Queue: HelmRepoUpdate][Command #0 End] 21:02:10.121920 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmFluidOSNodeInstall][Command #0 Start] 21:02:10.126015 helm upgrade --install --devel --namespace fluidos --create-namespace node fluidos/node --set provider=kind --set common.configMaps.nodeIdentity.ip=172.18.0.2 --set common.configMaps.nodeIdentity.domain=consumer.fluidos.eu --set common.configMaps.nodeIdentity.nodeId=consumer --set rearController.service.gateway.nodePort.port=30000 --set networkManager.config.enableLocalDiscovery=false --wait --timeout 1h --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml
+[Queue: HelmFluidOSNodeInstall][Command #0] Release "node" does not exist. Installing it now.
+[Queue: HelmFluidOSNodeInstall][Command #0] NAME: node
+[Queue: HelmFluidOSNodeInstall][Command #0] LAST DEPLOYED: Mon Sep 22 21:02:11 2025
+[Queue: HelmFluidOSNodeInstall][Command #0] NAMESPACE: fluidos
+[Queue: HelmFluidOSNodeInstall][Command #0] STATUS: deployed
+[Queue: HelmFluidOSNodeInstall][Command #0] REVISION: 1
+[Queue: HelmFluidOSNodeInstall][Command #0] TEST SUITE: None
+[Queue: HelmFluidOSNodeInstall][Command #0 End] 21:03:11.243136 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmFluidOSNodeInstall][Command #0 Start] 21:03:11.665436 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer
+[Queue: HelmFluidOSNodeInstall][Command #0] knowncluster.network.fluidos.eu/knowncluster-provider-germany created
+[Queue: HelmFluidOSNodeInstall][Command #0 End] 21:03:11.830167 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmFluidOSNodeInstall][Command #0 Start] 21:03:16.278267 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer
+[Queue: HelmFluidOSNodeInstall][Command #0] knowncluster.network.fluidos.eu/knowncluster-provider-italy created
+[Queue: HelmFluidOSNodeInstall][Command #0 End] 21:03:16.456313 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoPeer][Command #0 Start] 21:03:20.911624 liqoctl peer --remote-kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --gw-server-service-type NodePort --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --cpu 80k --memory 80000Gi --pods 1270k
+[Queue: LiqoPeer][Command #0 End] 21:03:55.426607 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoPeer][Command #0 Start] 21:03:20.911656 liqoctl peer --remote-kubeconfig /home/ubuntu/.kwok/clusters/provider-italy/kubeconfig.yaml --gw-server-service-type NodePort --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --cpu 80k --memory 80000Gi --pods 1270k
+[Queue: LiqoPeer][Command #0 End] 21:03:56.746635 Executed at Time: 0.000000 Seconds
+
+[Queue: FluidOSEnd][Command #0 Start] 21:03:56.747286 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --namespace fluidos
+[Queue: FluidOSEnd][Command #0] configmap/fluidos-mbmo-configmap created
+[Queue: FluidOSEnd][Command #0 End] 21:03:57.037141 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoOffload][Command #0 Start] 21:03:57.037968 kubectl create namespace liqo-namespace --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer
+[Queue: LiqoOffload][Command #0] namespace/liqo-namespace created
+[Queue: LiqoOffload][Command #0 End] 21:03:57.173634 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoOffload][Command #0 Start] 21:03:57.173868 liqoctl offload namespace liqo-namespace --namespace-mapping-strategy EnforceSameName --pod-offloading-strategy LocalAndRemote --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml
+[Queue: LiqoOffload][Command #0 End] 21:03:57.622876 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoEnd][Command #0 Start] 21:03:57.623046 node cordon
+[Queue: LiqoEnd][Command #0] Cordoned node consumer-control-plane
+[Queue: LiqoEnd][Command #0 End] 21:03:57.645811 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoEnd][Command #0 Start] 21:03:57.645984 node uncordon
+[Queue: LiqoEnd][Command #0 End] 21:03:57.654740 Executed at Time: 0.000000 Seconds
+
+[Queue: Consumer-Queue][Command #5 Start] 21:04:23.433723 kubectl apply -f fluidos-deployment.yaml --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --namespace liqo-namespace
+[Queue: Consumer-Queue][Command #5] fluidosdeployment.fluidos.eu/default-deployment created
+[Queue: Consumer-Queue][Command #5 End] 21:04:23.635983 Executed at Time: 1.000608 Seconds
+
+[Queue: Consumer-Queue][Command #1 Start] 21:04:26.433997 kubectl get no -o wide --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer
+[Queue: Consumer-Queue][Command #1] NAME                     STATUS                     ROLES           AGE     VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
+[Queue: Consumer-Queue][Command #1] consumer-control-plane   Ready,SchedulingDisabled   control-plane   5m34s   v1.34.0   172.18.0.2     <none>        Debian GNU/Linux 12 (bookworm)   6.8.0-79-generic   containerd://2.1.3
+[Queue: Consumer-Queue][Command #1] provider-germany         Ready                      agent           22s     v1.34.0   10.244.0.234   <none>        <unknown>                        <unknown>          <unknown>
+[Queue: Consumer-Queue][Command #1] provider-italy           Ready                      agent           21s     v1.34.0   10.244.0.78    <none>        <unknown>                        <unknown>          <unknown>
+[Queue: Consumer-Queue][Command #1 End] 21:04:26.597243 Executed at Time: 4.000919 Seconds
+
+[Queue: Consumer-Queue][Command #2 Start] 21:04:26.434519 kubectl get po -o wide --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --namespace fluidos
+[Queue: Consumer-Queue][Command #2] NAME                                           READY   STATUS    RESTARTS   AGE   IP             NODE                     NOMINATED NODE   READINESS GATES
+[Queue: Consumer-Queue][Command #2] node-local-resource-manager-6b96db56fb-zb2kq   1/1     Running   0          89s   10.244.0.102   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #2] node-network-manager-zqsmb                     1/1     Running   0          89s   10.244.0.239   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #2] node-rear-controller-cdb7c5688-6v2np           1/1     Running   0          89s   10.244.0.240   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #2] node-rear-manager-f6fccfdb5-p4hw6              1/1     Running   0          89s   10.244.0.181   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #2 End] 21:04:26.608757 Executed at Time: 4.000913 Seconds
+
+[Queue: Consumer-Queue][Command #4 Start] 21:04:27.434404 kubectl get solver -o yaml --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --namespace fluidos
+[Queue: Consumer-Queue][Command #4] apiVersion: v1
+[Queue: Consumer-Queue][Command #4] items: []
+[Queue: Consumer-Queue][Command #4] kind: List
+[Queue: Consumer-Queue][Command #4] metadata:
+[Queue: Consumer-Queue][Command #4]   resourceVersion: ""
+[Queue: Consumer-Queue][Command #4 End] 21:04:27.594113 Executed at Time: 5.001219 Seconds
+
+[Queue: Consumer-Queue][Command #3 Start] 21:04:32.434164 kubectl get po -o wide --kubeconfig /home/ubuntu/.kwok/clusters/consumer/kubeconfig.yaml --context kind-consumer --all-namespaces
+[Queue: Consumer-Queue][Command #3] NAMESPACE                      NAME                                             READY   STATUS              RESTARTS     AGE     IP             NODE                     NOMINATED NODE   READINESS GATES
+[Queue: Consumer-Queue][Command #3] cert-manager                   cert-manager-595b985855-9pq4p                    1/1     Running             0            2m4s    10.244.0.55    consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] cert-manager                   cert-manager-cainjector-dd577f84c-q92hz          1/1     Running             0            2m4s    10.244.0.88    consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] cert-manager                   cert-manager-webhook-79cd9bf9d-97p4n             1/1     Running             0            2m4s    10.244.0.143   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] fluidos                        node-local-resource-manager-6b96db56fb-zb2kq     1/1     Running             0            95s     10.244.0.102   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] fluidos                        node-network-manager-zqsmb                       1/1     Running             0            95s     10.244.0.239   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] fluidos                        node-rear-controller-cdb7c5688-6v2np             1/1     Running             0            95s     10.244.0.240   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] fluidos                        node-rear-manager-f6fccfdb5-p4hw6                1/1     Running             0            95s     10.244.0.181   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    cilium-envoy-6np6r                               0/1     Pending             0            27s     <none>         <none>                   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    cilium-envoy-rbmt2                               0/1     Pending             0            28s     <none>         <none>                   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    cilium-envoy-vwxx6                               1/1     Running             0            4m16s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    cilium-n4f4c                                     1/1     Running             0            4m16s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    cilium-operator-58bc444987-8jzzw                 0/1     OffloadingBackOff   0            4m16s   <none>         provider-germany         <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    cilium-operator-58bc444987-9jx7w                 1/1     Running             0            4m16s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    coredns-66bc5c9577-4s764                         1/1     Running             0            5m31s   10.244.0.153   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    coredns-66bc5c9577-nlxpd                         1/1     Running             0            5m31s   10.244.0.224   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    etcd-consumer-control-plane                      1/1     Running             0            5m39s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    kube-apiserver-consumer-control-plane            1/1     Running             0            5m38s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    kube-controller-manager-consumer-control-plane   1/1     Running             0            5m38s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    kube-proxy-cpm2h                                 1/1     Running             0            5m31s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    kube-proxy-l525d                                 0/1     OffloadingBackOff   0            27s     <none>         provider-italy           <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    kube-proxy-zwzm4                                 0/1     OffloadingBackOff   0            28s     <none>         provider-germany         <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    kube-scheduler-consumer-control-plane            1/1     Running             0            5m38s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    kwok-controller-d5dbcc9d9-8p4zj                  1/1     Running             0            5m31s   10.244.0.33    consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] kube-system                    metrics-server-6b8d48fc4-nkmv4                   1/1     Running             0            2m10s   10.244.0.169   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo-tenant-provider-germany   gw-provider-germany-6fffb4d8d8-zm7gf             3/3     Running             0            57s     10.244.0.135   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo-tenant-provider-germany   vk-provider-germany-68d7bf7b55-79ckx             1/1     Running             0            37s     10.244.0.234   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo-tenant-provider-italy     gw-provider-italy-66fc6f5d9f-fdx65               3/3     Running             0            56s     10.244.0.210   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo-tenant-provider-italy     vk-provider-italy-744b54fdd5-cqwx8               1/1     Running             0            36s     10.244.0.78    consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo                           liqo-controller-manager-8c8c6757b-stfvz          1/1     Running             1 (3m ago)   3m40s   10.244.0.157   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo                           liqo-crd-replicator-575c6b99b4-gxt7f             1/1     Running             0            3m40s   10.244.0.195   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo                           liqo-fabric-djhv2                                1/1     Running             0            3m40s   172.18.0.2     consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo                           liqo-ipam-c9bd4fc4c-c99b9                        1/1     Running             0            3m40s   10.244.0.209   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo                           liqo-metric-agent-6d4b686655-5dmln               1/1     Running             0            3m40s   10.244.0.112   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo                           liqo-proxy-5d94bbd5f7-44m85                      1/1     Running             0            3m40s   10.244.0.158   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] liqo                           liqo-webhook-dd86d5f7c-jzqcp                     1/1     Running             0            3m40s   10.244.0.162   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3] local-path-storage             local-path-provisioner-7b8c8ddbd6-lvcwx          1/1     Running             0            5m31s   10.244.0.101   consumer-control-plane   <none>           <none>
+[Queue: Consumer-Queue][Command #3 End] 21:04:32.648317 Executed at Time: 10.000993 Seconds
+
+[Queue: Metaorchestrator][Command #0 Start] 21:04:17.431959 kopf run -m fluidos_model_orchestrator
+[Queue: Metaorchestrator][Command #0 End] 21:05:02.771314 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterDelete][Command #0 Start] 21:05:02.771997 kind delete cluster --name consumer
+[Queue: ClusterDelete][Command #0 End] 21:05:07.211067 Executed at Time: 40.338964 Seconds
+

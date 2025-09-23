@@ -1,0 +1,21 @@
+kind: SimCommandsConfiguration
+apiVersion: k8s-sim.fbk.eu/v1alpha1
+metadata:
+    name: Deutsche-provider
+spec:
+    queues:
+        - name: DE-Queue
+          kubeconfig: ""
+          sequence:
+            - command: po get
+              time: 15
+              args:
+                - -o wide
+              namespace: liqo-namespace
+            - command: flavors get
+              time: 40
+              namespace: fluidos
+            - command: no get
+              time: 2
+              args:
+                - -o wide

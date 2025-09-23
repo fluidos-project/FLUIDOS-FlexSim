@@ -1,0 +1,113 @@
+[Queue: ClusterCreate][Command #0 Start] 20:50:33.271785 kind create cluster --name provider-germany --config - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml
+[Queue: ClusterCreate][Command #0] Creating cluster "provider-germany" ...
+[Queue: ClusterCreate][Command #0]  • Ensuring node image (kindest/node:v1.34.0) 🖼  ...
+[Queue: ClusterCreate][Command #0]  ✓ Ensuring node image (kindest/node:v1.34.0) 🖼
+[Queue: ClusterCreate][Command #0]  • Preparing nodes 📦   ...
+[Queue: ClusterCreate][Command #0]  ✓ Preparing nodes 📦 
+[Queue: ClusterCreate][Command #0]  • Writing configuration 📜  ...
+[Queue: ClusterCreate][Command #0]  ✓ Writing configuration 📜
+[Queue: ClusterCreate][Command #0]  • Starting control-plane 🕹️  ...
+[Queue: ClusterCreate][Command #0]  ✓ Starting control-plane 🕹️
+[Queue: ClusterCreate][Command #0]  • Installing StorageClass 💾  ...
+[Queue: ClusterCreate][Command #0]  ✓ Installing StorageClass 💾
+[Queue: ClusterCreate][Command #0] Set kubectl context to "kind-provider-germany"
+[Queue: ClusterCreate][Command #0] You can now use your cluster with:
+[Queue: ClusterCreate][Command #0] 
+[Queue: ClusterCreate][Command #0] kubectl cluster-info --context kind-provider-germany --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml
+[Queue: ClusterCreate][Command #0] 
+[Queue: ClusterCreate][Command #0] Have a nice day! 👋
+[Queue: ClusterCreate][Command #0 End] 20:50:53.606798 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:53.607920 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] Warning: unrecognized format "int64"
+[Queue: ClusterCreate][Command #0] Warning: unrecognized format "int32"
+[Queue: ClusterCreate][Command #0 End] 20:50:54.397368 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:54.397647 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0 End] 20:50:56.710192 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:56.710500 kubectl apply -f - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0 End] 20:50:56.979172 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:50:58.025529 kind load docker-image quay.io/cilium/cilium:v1.17.6 --name provider-germany
+[Queue: ClusterCreate][Command #0] Image: "quay.io/cilium/cilium:v1.17.6" with ID "sha256:40c15f03eb84b156b28d26bbdb3616c61a3adebc0684bf6a4e4b0c1d26b0241d" not yet present on node "provider-germany-control-plane", loading...
+[Queue: ClusterCreate][Command #0 End] 20:52:05.573200 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:05.573444 helm install cilium cilium/cilium --version v1.17.6 --namespace kube-system --set image.PullPolicy=IfNotPresent --set ipam.mode=kubernetes -f - --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --wait
+[Queue: ClusterCreate][Command #0] I0922 20:52:08.368145  123787 warnings.go:110] "Warning: spec.SessionAffinity is ignored for headless services"
+[Queue: ClusterCreate][Command #0 End] 20:52:32.597217 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:32.597379 kubectl apply -f fluidos-crds/ --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0] Warning: unrecognized format "int64"
+[Queue: ClusterCreate][Command #0 End] 20:52:32.999412 Executed at Time: 0.000000 Seconds
+
+[Queue: ClusterCreate][Command #0 Start] 20:52:32.999674 kubectl delete configmaps fluidos-mbmo-configmap --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context 
+[Queue: ClusterCreate][Command #0 End] 20:52:33.097789 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoInstall][Command #0 Start] 20:52:35.112175 node uncordon
+[Queue: LiqoInstall][Command #0 End] 20:52:35.139584 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoInstall][Command #0 Start] 20:52:35.139764 liqoctl install kind --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --cluster-id provider-germany
+[Queue: LiqoInstall][Command #0] Initializing installer
+[Queue: LiqoInstall][Command #0] INFO: Installer initialized
+[Queue: LiqoInstall][Command #0] Retrieving cluster configuration
+[Queue: LiqoInstall][Command #0] INFO: Cluster configuration correctly retrieved
+[Queue: LiqoInstall][Command #0] Generating installation parameters
+[Queue: LiqoInstall][Command #0] INFO: Installation parameters correctly generated
+[Queue: LiqoInstall][Command #0] Installing or upgrading Liqo... (this may take a few minutes)
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.451087  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.473155  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.533191  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.557226  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.581232  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.607364  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.918217  127316 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:36.918247  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.273399  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.273449  127316 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.362472  127316 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.423396  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.670239  127316 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.670273  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.972687  127316 warnings.go:70] unrecognized format "int64"
+[Queue: LiqoInstall][Command #0] W0922 20:52:37.972748  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] W0922 20:52:38.008826  127316 warnings.go:70] unrecognized format "int32"
+[Queue: LiqoInstall][Command #0] INFO: All Set! You can now proceed establishing a peering (liqoctl peer --help for more information)
+[Queue: LiqoInstall][Command #0] INFO: Make sure to use the same version of Liqo on all remote clusters
+[Queue: LiqoInstall][Command #0 End] 20:53:10.072826 Executed at Time: 0.000000 Seconds
+
+[Warning][Queue: Topology][Command #0] 20:53:20.171640 (Command: node create) open : no such file or directory.
+Creating default node
+
+[Queue: Topology][Command #0 Start] 20:53:20.171737 node create
+[Queue: Topology][Command #0 End] 20:53:20.184687 Executed at Time: 0.000000 Seconds
+
+[Queue: HelmFluidOSNodeInstall][Command #0 Start] 20:53:20.488386 helm upgrade --install --devel --namespace fluidos --create-namespace node fluidos/node --set provider=kind --set common.configMaps.nodeIdentity.ip=172.18.0.4 --set common.configMaps.nodeIdentity.domain=provider-germany.fluidos.eu --set common.configMaps.nodeIdentity.nodeId=provider-germany --set rearController.service.gateway.nodePort.port=30002 --set networkManager.config.enableLocalDiscovery=false --wait --timeout 1h --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:53:21.015984  132451 warnings.go:110] "Warning: unrecognized format \"int64\""
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:54:01.386188  132451 warnings.go:110] "Warning: spec.privateKey.rotationPolicy: In cert-manager >= v1.18.0, the default value changed from `Never` to `Always`."
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:54:01.488379  132451 warnings.go:110] "Warning: spec.privateKey.rotationPolicy: In cert-manager >= v1.18.0, the default value changed from `Never` to `Always`."
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:54:01.602924  132451 warnings.go:110] "Warning: spec.privateKey.rotationPolicy: In cert-manager >= v1.18.0, the default value changed from `Never` to `Always`."
+[Queue: HelmFluidOSNodeInstall][Command #0] I0922 20:54:01.638314  132451 warnings.go:110] "Warning: metadata.annotations[kubernetes.io/enforce-mountable-secrets]: deprecated in v1.32+; prefer separate namespaces to isolate access to mounted secrets"
+[Queue: HelmFluidOSNodeInstall][Command #0 End] 20:54:17.842506 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoEnd][Command #0 Start] 20:55:01.680374 node cordon
+[Queue: LiqoEnd][Command #0 End] 20:55:01.694404 Executed at Time: 0.000000 Seconds
+
+[Queue: LiqoEnd][Command #0 Start] 20:55:01.694474 node uncordon
+[Queue: LiqoEnd][Command #0 End] 20:55:01.707109 Executed at Time: 0.000000 Seconds
+
+[Queue: DE-Queue][Command #3 Start] 20:55:08.710793 kubectl get no -o wide --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context kind-provider-germany
+[Queue: DE-Queue][Command #3 End] 20:55:08.859934 Executed at Time: 2.000776 Seconds
+
+[Queue: DE-Queue][Command #1 Start] 20:55:21.710203 kubectl get po -o wide --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context kind-provider-germany --namespace liqo-namespace
+[Queue: DE-Queue][Command #1] No resources found in liqo-namespace namespace.
+[Queue: DE-Queue][Command #1 End] 20:55:21.863270 Executed at Time: 15.000164 Seconds
+
+[Queue: DE-Queue][Command #2 Start] 20:55:46.710441 kubectl get flavors --kubeconfig /home/ubuntu/.kwok/clusters/provider-germany/kubeconfig.yaml --context kind-provider-germany --namespace fluidos
+[Queue: DE-Queue][Command #2 End] 20:55:46.861174 Executed at Time: 40.000436 Seconds
+
+[Queue: ClusterDelete][Command #0 Start] 20:55:52.694367 kind delete cluster --name provider-germany
+[Queue: ClusterDelete][Command #0] Deleting cluster "provider-germany" ...
+[Queue: ClusterDelete][Command #0] Deleted nodes: ["provider-germany-control-plane"]
+[Queue: ClusterDelete][Command #0 End] 20:55:55.219600 Executed at Time: 45.984525 Seconds
+

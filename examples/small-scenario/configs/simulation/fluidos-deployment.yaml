@@ -1,0 +1,36 @@
+apiVersion: fluidos.eu/v1
+kind: FLUIDOSDeployment
+metadata:
+  name: default-deployment
+spec:
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: default-deployment
+    labels:
+      type: kwok
+      app: default-deployment
+  spec:
+    replicas: 5
+    selector:
+      matchLabels:
+        app: default-deployment
+    template:
+      metadata:
+        name: default-fake-pod
+        labels:
+          app: default-deployment
+        annotations:
+          kwok.x-k8s.io/usage-cpu: "50m"
+          kwok.x-k8s.io/usage-memory: 512Mi
+      spec:
+        containers:
+          - name: fake-container
+            image: fake-image
+            resources:
+              requests:
+                memory: 512Mi
+                cpu: "50m"
+              limits:
+                memory: 512Mi
+                cpu: "50m"
