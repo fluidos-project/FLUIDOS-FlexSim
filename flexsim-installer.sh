@@ -185,3 +185,14 @@ if ! command -v liqoctl &>/dev/null; then
   install -o root -g root -m 0755 liqoctl /usr/local/bin/liqoctl
   rm ./liqoctl
 fi
+
+# Install metaorchestrator
+if ! test -f "/usr/local/bin/kopf"; then
+  mkdir "morch"
+  wget https://github.com/fluidos-project/fluidos-modelbased-metaorchestrator/archive/refs/tags/v0.2.2.tar.gz -O - | tar -xzf - -C morch --strip-components=1
+  pip install -e morch
+  KOPF_PATH="$(which kopf)"
+  mv "KOPF_PATH" /usr/local/bin/kopf
+  rm -r morch
+fi
+
