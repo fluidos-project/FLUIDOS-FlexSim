@@ -43,3 +43,26 @@ flexsim simulate <workspace-name> -l all # add a -v for verbosity
 > [!TIP]
 > you can run a simulation for a workspace from everywhere, not just from the position of the workspace directory.
 > If you lose track of your workspace, just run a `flexsim list` command to list all the existing workspaces and their location.
+
+## Examples
+The `examples/` folder provides ready-to-use configuration (`configs`) files to run FLUIDOS-FlexSim in different scales. These can be used as starting points for testing orchestration, scheduling, and federation strategies. The folder also contains logs (`logs`) of the respective simulations, where it is possible to inspect metrics, events, and other relevant steps and data generated during the experiments.
+
+- **Small scenario** (`examples/small-scenario`):
+  Defines a minimal environment with a limited number of nodes and services. It is useful for quickly validating functionality, debugging, or running lightweight simulations.
+  The simulated infrastructure is composed by three FLUIDOS nodes: located in Italy, Germany, and Ireland. The Ireland node act as consumer, while German and Italian nodes act as providers with 5 Kubernetes worker each.
+
+- **Large scenario** (`examples/large-scenario`):
+  Provides a configuration with a larger number of nodes, resources, and policies. This setup is designed to test scalability, stress orchestration mechanisms, and evaluate performance under more realistic or complex workloads.
+  The simulated infrastructure is composed by three FLUIDOS nodes: located in Italy, Germany, and Ireland. The Ireland node act as consumer, while German and Italian nodes act as providers with 5000 Kubernetes worker each.
+
+You can run these scenarios by passing the worksapce-name to the simulator, for example:
+
+```shell
+flexsim simulate small-scenario -l all -v
+flexsim simulate small-scenario -l all -v
+```
+
+> [!TIP]
+> - Because the large scenario can be resource-intensive, it may be prudent to run on a machine with more memory/CPUs.
+> - You can adapt the example configuration files to your custom test cases (e.g. adjust node counts, resource capacities and thresholds).
+> - For reproducibility and statistical significance, run multiple replicates of the same scenario and aggregate results.
